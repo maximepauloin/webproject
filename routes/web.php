@@ -10,7 +10,7 @@
 | to using a Closure or controller method. Build something great!
 |
 */
-
+//Routetest
 Route::resource('post', 'PostController', ['except' => ['show', 'edit', 'update']]);
 Route::get('/', function () {
     return view('welcome');
