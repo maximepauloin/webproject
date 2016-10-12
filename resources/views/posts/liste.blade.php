@@ -1,4 +1,4 @@
-@extends('posts.template    ')
+@extends('posts.template')
 
 @section('header')
     @if(Auth::check())

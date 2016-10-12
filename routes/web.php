@@ -13,9 +13,12 @@
 //Routetest
 Route::resource('post', 'PostController', ['except' => ['show', 'edit', 'update']]);
 Route::get('/', function () {
-    return view('welcome');
+    return Redirect::route('login');
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+/*Route::get('/home', function () {
+    return Redirect::route('login');
+});*/
