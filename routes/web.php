@@ -11,7 +11,18 @@
 |
 */
 //Routetest
+/*
+Route::get('/adminpage',function(){
+    return view('posts.adminpage');
+});*/
+Route::get('/about', function () {
+    return view('posts.about');
+});
+Route::post('post', function () {
+    return 'you have searched' . Input::All();
+});
 Route::resource('post', 'PostController', ['except' => ['show', 'edit', 'update']]);
+
 Route::get('/', function () {
     return Redirect::route('login');
 });

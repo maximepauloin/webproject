@@ -4,22 +4,23 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="../../favicon.ico">
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
     <title>IT service</title>
     {!! Html::style('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')!!}
     {!! Html::style('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')!!}
-    <![endif]-->
+    {!! Html::style('css/search.css')!!}
     <style> textarea {
             resize: none;
         } </style>
 </head>
-<body>
+
 <header class="jumbotron">
     <div class="container">
         <h1 class="page-header">{!! link_to_route('post.index', 'IT helpdesk') !!}</h1>
         @yield('header')
     </div>
 </header>
+<body>
 <div class="container">
     @yield('identification')
 </div>
@@ -29,7 +30,12 @@
 </body>
 <footer>
     <div>
-        <center> &copy; Copyright 2016 Maxime & Brandon.</center>
+        <center> &copy; Copyright 2016 Maxime & Brandon.
+            @if(Route::getCurrentRoute()->getPath()!='about')
+                <a href="about" rel="nofollow">About </a>
+            @endif
+        </center>
+
     </div>
 </footer>
 

@@ -2,8 +2,13 @@
 @section('header')
     @if(Auth::check())
         <div class="btn-group pull-right">
-            {!! link_to_route('post.create', 'Create an article', [], ['class' => 'btn btn-info']) !!}
-            {!! link_to('logout', 'Log out', ['class' => 'btn btn-warning']) !!}
+            @if(Auth::user()->admin==1 )
+                {{-- TO MODIFY WITH ADMIN VIEW --}}
+                {!! link_to_route('post.create', 'Admin page', [], ['class' => 'btn btn-primary']) !!}
+            @else
+                {!! link_to_route('post.create', 'Create an article', [], ['class' => 'btn btn-info']) !!}
+            @endif
+            {!! link_to('logout', 'Log out', ['class' => 'btn btn-danger']) !!}
         </div>
     @else
         {!! link_to('login', 'Log in', ['class' => 'btn btn-info pull-right']) !!}
@@ -28,7 +33,7 @@
 @section('contenu')
     <br>
     <div class="col-sm-offset-3 col-sm-6">
-        <div class="panel panel-info">
+        <div class="panel panel-primary">
 
                 <div class="panel-heading">Add an article</div>
                 <div class="panel-body">
