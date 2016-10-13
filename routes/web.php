@@ -18,9 +18,9 @@ Route::get('/adminpage',function(){
 Route::get('/about', function () {
     return view('posts.about');
 });
-Route::post('post', function () {
+/*Route::post('post', function () {
     return 'you have searched' . Input::All();
-});
+});*/
 Route::resource('post', 'PostController', ['except' => ['show', 'edit', 'update']]);
 
 Route::get('/', function () {
