@@ -39,11 +39,11 @@
                 <div class="panel-body">
                     {!! Form::open(['route' => 'post.store']) !!}
                     <div class="form-group {!! $errors->has('title') ? 'has-error' : '' !!}">
-                        {!! Form::text('title', null, ['class' => 'form-control', 'placeholder' => 'Title']) !!}
+                        {!! Form::text('title', null, ['class' => 'form-control', 'placeholder' => 'title']) !!}
                         {!! $errors->first('title', '<small class="help-block">:message</small>') !!}
                     </div>
                     <div class="form-group {!! $errors->has('content') ? 'has-error' : '' !!}">
-                        {!! Form::textarea ('content', null, ['class' => 'form-control', 'placeholder' => 'Content']) !!}
+                        {!! Form::textarea ('content', null, ['class' => 'form-control', 'placeholder' => 'content']) !!}
                         {!! $errors->first('content', '<small class="help-block">:message</small>') !!}
                     </div>
                     {!! Form::submit('Send !', ['class' => 'btn btn-info pull-right']) !!}

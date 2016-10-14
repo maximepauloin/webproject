@@ -37,7 +37,7 @@ class PostController extends Controller
         return view('posts.add');
     }
 
-    public function store(PostRequest $request)
+    public function store(Request $request)
     {
         $inputs = array_merge($request->all(), ['user_id' => $request->user()->id]);
 
