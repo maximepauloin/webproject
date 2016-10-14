@@ -1,22 +1,19 @@
 @extends('posts.template')
 
 @section('header')
-    {!! Html::style('css/search.css')!!}
+
     @if(Auth::check())
-        <div class="align-right">
 
-            <div class="btn-group pull-right">
-
-                @if(Auth::user()->admin==1 )
-                    {{--CHANGE TO ADMIN PAGE--}}
-                    {!! link_to_route('post.create', 'Admin page', [], ['class' => 'btn btn-primary']) !!}
-                @else
-                    {!! link_to_route('post.create', 'Create an article', [], ['class' => 'btn btn-info']) !!}
-                @endif
-                {!! link_to('logout', 'Log out', ['class' => 'btn btn-danger']) !!}
-            </div>
-
+        <div class="btn-group pull-right">
+            @if(Auth::user()->admin==1 )
+                {{--CHANGE TO ADMIN PAGE--}}
+                {!! link_to_route('post.create', 'Admin page', [], ['class' => 'btn btn-primary']) !!}
+            @else
+                {!! link_to_route('post.create', 'Create an article', [], ['class' => 'btn btn-info']) !!}
+            @endif
+            {!! link_to('logout', 'Log out', ['class' => 'btn btn-danger']) !!}
         </div>
+
     @endif
 @endsection
 @section('identification')
@@ -42,67 +39,41 @@
 
 @endsection
 @section('contenu')
-
+    {!! Html::style('css/search.css')!!}
     @if(isset($info))
         <div class="row alert alert-info">{{ $info }}</div>
     @endif
-    <div class='container'>
-        <div class="align-left">{!! $links !!}</div>
-        <div class="align-right">
-
-            <div class="form-group has-feedback">
-                <label for="search" class="sr-only">Search</label>
-                <input type="text" class="form-control" name="search" id="search" placeholder="search">
-
-                <span class="glyphicon glyphicon-search form-control-feedback"></span>
-            </div>
-
+    <div class='row'>
+        <div class="col-lg-2">{!! $links !!}
         </div>
+        <div class="container">
+            <div id="quick-access">
+                <form class="form-inline quick-search-form" role="form" action="#">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search here">
+                    </div>
+                    <button type="submit" id="quick-search" class="btn btn-custom"><span
+                                class="glyphicon glyphicon-search custom-glyph-color"></span></button>
+                </form>
+            </div>
+        </div>
+
+
     </div>
 
     @foreach($posts as $post)
 
-        <div class="cad" style="border: 1px solid grey;">
-
-            <div class="media" enctype="multipart/form-data">
-                <div class="media-left">
-                    {{ HTML::image('image/avatar1.png') }}
-                    <img src="{{URL::asset('image/avatar1.png')}}" alt=""/>
-
-                </div>
-                <div class="media-body">
-                    <div class="align-left">
-                        <h4 class="media-heading">
-                            {{$post->user->name}}
-                            <small><i>Posted on {!! $post->created_at->format('M d, Y') !!}</i></small>
-                        </h4>
-
-                    </div>
-                    <div class="align-right">
-
-                        @if ($post->resolv)
-                            <h5>{{ $post->title }}
-                                <span style="color:#40D76B">&#x2714 Resolved !</span>
-                            </h5>
-                        @else
-                            <h5>{{ $post->title }}
-                                <span style="color:#ff4d4d">&#x2718 To Resolve !</span>
-                            </h5>
-                        @endif
+        <div class="cad" style="border: 1px solid lightgrey; padding-left: 10px;padding-right: 10px;">
 
 
-                        <p>{{ $post->content }}</p>
-                    </div>
-                </div>
-            </div>
-            <article class="row bg-primary">
+            <article class="row bg-default">
                 <div class="col-md-12">
                     <header>
 
                         @if ($post->resolv)
-                            <h1>{{ $post->title }}
-                                <span style="color:#40D76B">&#x2714 Resolved !</span>
-                            </h1>
+                            <h1>{{ $post->title }}</h1>
+                            <p style="font-size:6px; color:#40D76B;">&#x2714 Resolved !</p>
+
                         @else
                             <h1>{{ $post->title }}
                                 <span style="color:#ff4d4d">&#x2718 To Resolve !</span>
@@ -120,12 +91,15 @@
                         <em class="pull-right">
                             <span class="glyphicon glyphicon-pencil"></span> {{ $post->user->name }}
                             &nbsp &#9990 {{$post->user->phonenb}}
-                            &nbsp the {!! $post->created_at->format('d-m-Y') !!}
+                            &nbsp
+                            <small><i>Posted on {!! $post->created_at->format('M d, Y') !!}</i></small>
                         </em>
                     </section>
                 </div>
             </article>
             <br>
+        </div>
+        <div class="cad" style="padding: 15px ;">
         </div>
     @endforeach
     {!! $links !!}

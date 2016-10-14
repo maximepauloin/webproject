@@ -15,6 +15,7 @@
 Route::get('/adminpage',function(){
     return view('posts.adminpage');
 });*/
+Auth::routes();
 Route::get('/about', function () {
     return view('posts.about');
 });
@@ -27,7 +28,6 @@ Route::get('/', function () {
     return Redirect::route('login');
 });
 
-Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 /*Route::get('/home', function () {
