@@ -16,11 +16,10 @@
 
 <header class="jumbotron">
     <div class="container">
-        <h1 class="page-header">{!! link_to_route('post.index', 'IT helpdesk') !!}</h1>
         @yield('header')
     </div>
 </header>
-<body>
+<body style="background-color: #F5F5F5;">
 <div class="container">
     @yield('identification')
 </div>

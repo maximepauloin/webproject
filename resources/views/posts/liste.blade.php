@@ -3,17 +3,40 @@
 @section('header')
 
     @if(Auth::check())
+        <div class="row">
+            <div class="col-sm-4">
+                <h1 class="page-header" style="color:#003399">IT Helpdesk</h1>
 
-        <div class="btn-group pull-right">
-            @if(Auth::user()->admin==1 )
-                {{--CHANGE TO ADMIN PAGE--}}
-                {!! link_to_route('post.create', 'Admin page', [], ['class' => 'btn btn-primary']) !!}
-            @else
-                {!! link_to_route('post.create', 'Create an article', [], ['class' => 'btn btn-info']) !!}
-            @endif
-            {!! link_to('logout', 'Log out', ['class' => 'btn btn-danger']) !!}
+            </div>
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4" style="padding-top:65px">
+
+                @if(Auth::user()->admin==1 )
+                    {{--CHANGE TO ADMIN PAGE--}}
+                    {!! link_to_route('post.create', 'Admin page', [], ['class' => 'btn btn-primary']) !!}
+                @else
+                    {!! link_to_route('post.create', 'Create an article', [], ['class' => 'btn btn-info']) !!}
+                @endif
+                {!! link_to('logout', 'Log out', ['class' => 'btn btn-danger']) !!}
+            </div>
+
+
         </div>
+    @else
+        <div class="row">
+            <div class="col-sm-4">
+                <h1 class="page-header" style="color:#003399">IT Helpdesk</h1>
 
+            </div>
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4" style="padding-top:65px">
+
+
+                {!! link_to('login', 'Log in', ['class' => 'btn btn-primary']) !!}
+            </div>
+
+
+        </div>
     @endif
 @endsection
 @section('identification')
@@ -39,44 +62,46 @@
 
 @endsection
 @section('contenu')
-    {!! Html::style('css/search.css')!!}
+    {!! Html::style('css/search2.css')!!}
     @if(isset($info))
         <div class="row alert alert-info">{{ $info }}</div>
     @endif
+
     <div class='row'>
         <div class="col-lg-2">{!! $links !!}
         </div>
-        <div class="container">
-            <div id="quick-access">
-                <form class="form-inline quick-search-form" role="form" action="#">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search here">
-                    </div>
-                    <button type="submit" id="quick-search" class="btn btn-custom"><span
-                                class="glyphicon glyphicon-search custom-glyph-color"></span></button>
-                </form>
-            </div>
-        </div>
+        {{--<div class="container">
+           <div id="quick-access">
+               <form class="form-inline quick-search-form" role="form" action="#">
+                   <div class="form-group">
+                       <input type="text" class="form-control" placeholder="Search here">
+                   </div>
+                   <button type="submit" id="quick-search" class="btn btn-custom"><span
+                               class="glyphicon glyphicon-search custom-glyph-color"></span></button>
+               </form>
+           </div>
+       </div>
+       --}}
 
 
     </div>
 
     @foreach($posts as $post)
 
-        <div class="cad" style="border: 1px solid lightgrey; padding-left: 10px;padding-right: 10px;">
+        <div class="cad" style="padding-left: 25px;padding-right: 25px;border: 2px solid lightgrey; ">
 
 
             <article class="row bg-default">
-                <div class="col-md-12">
+                <div class="col-md-20">
                     <header>
 
                         @if ($post->resolv)
-                            <h1>{{ $post->title }}</h1>
-                            <p style="font-size:6px; color:#40D76B;">&#x2714 Resolved !</p>
-
+                            <h1>{{ $post->title }}
+                                <span style="font-size:20px; color:#40D76B;">&#x2714 Resolved !</span>
+                            </h1>
                         @else
                             <h1>{{ $post->title }}
-                                <span style="color:#ff4d4d">&#x2718 To Resolve !</span>
+                                <span style="font-size:20px;color:#ff4d4d" ;>&#x2718 To Resolve !</span>
                             </h1>
                         @endif
                     </header>

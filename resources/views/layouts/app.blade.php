@@ -6,7 +6,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Salut{{ config('app.name', 'IT helpdesk') }}</title>
+    <title>IT helpdesk</title>
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
@@ -38,7 +38,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        IT helpdesk{{ config('app.name', 'Laravel') }}
+                        IT helpdesk
                     </a>
                 </div>
 

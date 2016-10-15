@@ -15,6 +15,12 @@
 Route::get('/adminpage',function(){
     return view('posts.adminpage');
 });*/
+Route::get('/logout', function () {
+    Auth::logout();
+    Session::flush();
+    return Redirect::to('/login');
+});
+
 Auth::routes();
 Route::get('/about', function () {
     return view('posts.about');
