@@ -87,6 +87,7 @@
     </div>
 
     @foreach($posts as $post)
+        @if(Auth::check() and Auth::user()->admin==0 and Auth::user()->id==$post->user_id or Auth::user()->admin)
 
         <div class="cad" style="padding-left: 25px;padding-right: 25px;border: 2px solid lightgrey; ">
 
@@ -107,11 +108,17 @@
                     </header>
                     <hr>
                     <section>
-                        <p>{{ $post->content }}</p>
+                            <p>{{ $post->content }}</p>
                         @if(Auth::check() and Auth::user()->admin)
+                            {!! link_to_route('post.show', 'View', [$post->id], ['class' => 'btn btn-success btn-xs']) !!}
+                            {!! link_to_route('post.edit', 'Edit', [$post->id], ['class' => 'btn btn-success btn-xs']) !!}
+                            <div class="btn-group">
+                            </div>
+                            <div class="btn-group">
                             {!! Form::open(['method' => 'DELETE', 'route' => ['post.destroy', $post->id]]) !!}
-                            {!! Form::submit('Supprimer cet article', ['class' => 'btn btn-danger btn-xs ', 'onclick' => 'return confirm(\'Vraiment supprimer cet article ?\')']) !!}
+                            {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs', 'onclick' => 'return confirm(\'Do you really want to delete this post ?\')']) !!}
                             {!! Form::close() !!}
+                            </div>
                         @endif
                         <em class="pull-right">
                             <span class="glyphicon glyphicon-pencil"></span> {{ $post->user->name }}
@@ -124,6 +131,7 @@
             </article>
             <br>
         </div>
+        @endif
         <div class="cad" style="padding: 15px ;">
         </div>
     @endforeach

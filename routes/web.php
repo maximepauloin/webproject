@@ -28,8 +28,11 @@ Route::get('/about', function () {
 /*Route::post('post', function () {
     return 'you have searched' . Input::All();
 });*/
-Route::resource('post', 'PostController', ['except' => ['show', 'edit', 'update']]);
 
+Route::resource('post', 'PostController');
+
+
+//oute::get('post/{n}')
 Route::get('/', function () {
     return Redirect::route('login');
 });
