@@ -70,20 +70,6 @@
     <div class='row'>
         <div class="col-lg-2">{!! $links !!}
         </div>
-        {{--<div class="container">
-           <div id="quick-access">
-               <form class="form-inline quick-search-form" role="form" action="#">
-                   <div class="form-group">
-                       <input type="text" class="form-control" placeholder="Search here">
-                   </div>
-                   <button type="submit" id="quick-search" class="btn btn-custom"><span
-                               class="glyphicon glyphicon-search custom-glyph-color"></span></button>
-               </form>
-           </div>
-       </div>
-       --}}
-
-
     </div>
 
     @foreach($posts as $post)
