@@ -14,15 +14,6 @@ class PostRepository
         $this->post = $post;
     }
 
-    private function save(Post $post, Array $inputs)
-    {
-        $post->title = $inputs['title'];
-        $post->resolv= $inputs['resolv'];
-        $post->content = $inputs['content'];
-
-        $post->save();
-    }
-
     public function getPaginate($n)
     {
         return $this->post->with('user')
@@ -30,14 +21,23 @@ class PostRepository
             ->paginate($n);
     }
 
-    public function getById($id)
-    {
-        return $this->post->findOrFail($id);
-    }
-
     public function update($id, Array $inputs)
     {
         $this->save($this->getById($id), $inputs);
+    }
+
+    private function save(Post $post, Array $inputs)
+    {
+        $post->title = $inputs['title'];
+        $post->resolv = $inputs['resolv'];
+        $post->content = $inputs['content'];
+
+        $post->save();
+    }
+
+    public function getById($id)
+    {
+        return $this->post->findOrFail($id);
     }
 
     public function store($inputs)

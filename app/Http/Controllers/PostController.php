@@ -37,32 +37,25 @@ class PostController extends Controller
         return view('posts.add');
     }
 
-    public function show($id) //display the information of a memo
+    public function show($id)
     {
         $posts = $this->postRepository->getById($id);
 
-        return view('view',  compact('posts'));
+        return view('view', compact('posts'));
     }
 
-    public function edit($id) //Send the form for the modification
+    public function edit($id)
     {
         $post = $this->postRepository->getById($id);
-        return view('edit',  compact('post'));
+        return view('edit', compact('post'));
     }
 
-    public function update(Request $request, $id) //Modification of a memo
+    public function update(Request $request, $id)
     {
         $this->postRepository->update($id, $request->all());
 
         return redirect('post')->withOk("The post '" . $request->input('title') . "' has been modified.");
     }
-
-    /*public function resolv($id) //Modification of a memo
-    {
-        $this->postRepository->resolv($id);
-
-        return redirect(route('post.index'));
-    }*/
 
     public function store(Request $request)
     {

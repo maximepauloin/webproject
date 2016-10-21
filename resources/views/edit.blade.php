@@ -20,7 +20,6 @@
                 {!! link_to('logout', 'Log out', ['class' => 'btn btn-danger']) !!}
             </div>
 
-
         </div>
     @else
         <div class="row">
@@ -74,7 +73,7 @@
                         {!! Form::text('title', null, ['class' => 'form-control', 'placeholder' => 'Title']) !!}
                         {!! $errors->first('title', '<small class="help-block">:message</small>') !!}
                     </div>
-                                        <div class="form-group {!! $errors->has('content') ? 'has-error' : '' !!}">
+                    <div class="form-group {!! $errors->has('content') ? 'has-error' : '' !!}">
                         {!! Form::text('content', null, ['class' => 'form-control', 'placeholder' => 'Message']) !!}
                         {!! $errors->first('content', '<small class="help-block">:message</small>') !!}
                     </div>
@@ -84,7 +83,8 @@
                             {{ Form::checkbox('resolv', 1, null, ['class' => 'field']) }}
                         </div>
                     @else
-                        <div style="visibility: hidden" class="form-group {!! $errors->has('resolv') ? 'has-error' : '' !!}">Resolved
+                        <div style="visibility: hidden"
+                             class="form-group {!! $errors->has('resolv') ? 'has-error' : '' !!}">Resolved
                             {{ Form::hidden('resolv', 0, null, ['class' => 'field']) }}
                             {{ Form::checkbox('resolv', 1, null, ['class' => 'field']) }}
                         </div>
