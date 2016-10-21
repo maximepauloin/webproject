@@ -107,9 +107,8 @@
                 </article>
                 <br>
             </div>
+            <div class="cad" style="padding: 15px ;">
+            </div>
         @endif
-        <div class="cad" style="padding: 15px ;">
-        </div>
     @endforeach
-    {!! $links !!}
 @endsection
