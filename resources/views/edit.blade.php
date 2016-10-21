@@ -70,21 +70,24 @@
             <div class="panel-body">
                 <div class="col-sm-12">
                     {!! Form::model($post, ['route' => ['post.update', $post->id], 'method' => 'put', 'class' => 'form-horizontal panel']) !!}
-                    @if(Auth::user()->admin==0)
                     <div class="form-group {!! $errors->has('title') ? 'has-error' : '' !!}">
                         {!! Form::text('title', null, ['class' => 'form-control', 'placeholder' => 'Title']) !!}
                         {!! $errors->first('title', '<small class="help-block">:message</small>') !!}
                     </div>
-                    <div class="form-group {!! $errors->has('content') ? 'has-error' : '' !!}">
+                                        <div class="form-group {!! $errors->has('content') ? 'has-error' : '' !!}">
                         {!! Form::text('content', null, ['class' => 'form-control', 'placeholder' => 'Message']) !!}
                         {!! $errors->first('content', '<small class="help-block">:message</small>') !!}
                     </div>
-                    @endif
-                    @if(Auth::user()->admin)
-                    <div class="form-group {!! $errors->has('resolv') ? 'has-error' : '' !!}">Resolved
-                        {{ Form::hidden('resolv', 0, null, ['class' => 'field']) }}
-                        {{ Form::checkbox('resolv', 1, null, ['class' => 'field']) }}
-                    </div>
+                    @if(Auth::user()->admin==1)
+                        <div class="form-group {!! $errors->has('resolv') ? 'has-error' : '' !!}">Resolved
+                            {{ Form::hidden('resolv', 0, null, ['class' => 'field']) }}
+                            {{ Form::checkbox('resolv', 1, null, ['class' => 'field']) }}
+                        </div>
+                    @else
+                        <div style="visibility: hidden" class="form-group {!! $errors->has('resolv') ? 'has-error' : '' !!}">Resolved
+                            {{ Form::hidden('resolv', 0, null, ['class' => 'field']) }}
+                            {{ Form::checkbox('resolv', 1, null, ['class' => 'field']) }}
+                        </div>
                     @endif
                     {!! Form::submit('Send', ['class' => 'btn btn-primary pull-right']) !!}
                     {!! Form::close() !!}

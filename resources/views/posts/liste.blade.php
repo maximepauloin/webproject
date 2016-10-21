@@ -108,9 +108,9 @@
                             <div class="btn-group">
                             </div>
                             <div class="btn-group">
-                            {!! Form::open(['method' => 'DELETE', 'route' => ['post.destroy', $post->id]]) !!}
-                            {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs', 'onclick' => 'return confirm(\'Do you really want to delete this post ?\')']) !!}
-                            {!! Form::close() !!}
+                                {!! Form::open(['method' => 'DELETE', 'route' => ['post.destroy', $post->id]]) !!}
+                                {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs', 'onclick' => 'return confirm(\'Do you really want to delete this post ?\')']) !!}
+                                {!! Form::close() !!}
                             </div>
                         @endif
                         <em class="pull-right">

@@ -63,7 +63,7 @@
 @endsection
 
 @section('contenu')
-    <div class="col-sm-offset-4 col-sm-4">
+    <div class="col-sm-offset-3 col-sm-6">
         <br>
         <div class="panel panel-primary">
             <div class="panel-heading">{{ $posts->title }}</div>
