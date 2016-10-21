@@ -28,7 +28,7 @@
 </div>
 </body>
 <footer>
-    <div>
+    <div style="margin:20px ; margin-bottom:20px ;">
         <center> &copy; Copyright 2016 Maxime & Brandon.
             @if(Route::getCurrentRoute()->getPath()!='about')
                 <a href="about" rel="nofollow">About </a>

@@ -94,10 +94,17 @@
                     </header>
                     <hr>
                     <section>
-                            <p>{{ $post->content }}</p>
+                        <p>{{ $post->content }}</p>
+                        @if(Auth::user()->admin==0)
+                            {!! link_to_route('post.edit', 'Edit', [$post->id], ['class' => 'btn btn-warning btn-xs']) !!}
+                        @endif
                         @if(Auth::check() and Auth::user()->admin)
                             {!! link_to_route('post.show', 'View', [$post->id], ['class' => 'btn btn-success btn-xs']) !!}
-                            {!! link_to_route('post.edit', 'Edit', [$post->id], ['class' => 'btn btn-success btn-xs']) !!}
+                            @if($post->resolv==0)
+                                {!! link_to_route('post.edit', 'Resolved', [$post->id], ['class' => 'btn btn-primary btn-xs']) !!}
+                            @else
+                                {!! link_to_route('post.edit', 'Resolved', [$post->id], ['class' => 'btn btn-primary btn-xs disabled']) !!}
+                            @endif
                             <div class="btn-group">
                             </div>
                             <div class="btn-group">

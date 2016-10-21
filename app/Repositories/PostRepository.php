@@ -23,13 +23,6 @@ class PostRepository
         $post->save();
     }
 
-    /*private function save(Post $post)
-    {
-        $post->resolv = "1";
-
-        $post->save();
-    }*/
-
     public function getPaginate($n)
     {
         return $this->post->with('user')
@@ -46,11 +39,6 @@ class PostRepository
     {
         $this->save($this->getById($id), $inputs);
     }
-
-    /*public function resolv($id)
-    {
-        $this->save($this->getById($id));
-    }*/
 
     public function store($inputs)
     {
