@@ -50,4 +50,5 @@ class PostRepository
         $this->post->findOrFail($id)->delete();
     }
 
+
 }

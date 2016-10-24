@@ -1,41 +1,14 @@
 @extends('posts.template')
 @section('header')
-    @if(Auth::check())
-        <div class="row">
-            <div class="col-sm-4">
-                <h1 class="page-header" style="color:#003399">IT Helpdesk</h1>
+    <div class="btn-group pull-right">
+        @if(Auth::check())
+            {!! link_to_route('post.index', 'Posts page', [], ['class' => 'btn btn-info']) !!}
+            {!! link_to('logout', 'Log out', ['class' => 'btn btn-danger']) !!}
+        @else
+            {!! link_to('login', 'Log in', ['class' => 'btn btn-primary']) !!}
 
-            </div>
-            <div class="col-sm-4"></div>
-            <div class="col-sm-4" style="padding-top:65px">
-
-                @if(Auth::user()->admin==1 )
-                    {{--CHANGE TO ADMIN PAGE--}}
-                    {!! link_to_route('post.create', 'Admin page', [], ['class' => 'btn btn-primary']) !!}
-                @else
-                    {!! link_to_route('post.create', 'Create an article', [], ['class' => 'btn btn-info']) !!}
-                @endif
-                {!! link_to('logout', 'Log out', ['class' => 'btn btn-danger']) !!}
-            </div>
-
-
-        </div>
-    @else
-        <div class="row">
-            <div class="col-sm-4">
-                <h1 class="page-header" style="color:#003399">IT Helpdesk</h1>
-
-            </div>
-            <div class="col-sm-4"></div>
-            <div class="col-sm-4" style="padding-top:65px">
-
-
-                {!! link_to('login', 'Log in', ['class' => 'btn btn-primary']) !!}
-            </div>
-
-
-        </div>
-    @endif
+        @endif
+    </div>
 @endsection
 @section('identification')
     <br>

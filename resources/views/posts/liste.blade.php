@@ -1,32 +1,20 @@
 @extends('posts.template')
 
 @section('header')
-    @if(Auth::check())
-        <div class="row">
-            <div class="col-sm-4">
-                <h1 class="page-header" style="color:#003399">IT Helpdesk</h1>
-            </div>
-            <div class="col-sm-4"></div>
-            <div class="col-sm-4" style="padding-top:65px">
-                @if(Auth::user()->admin==1 )
-                    {{--CHANGE TO ADMIN PAGE--}}
-                    {!! link_to_route('post.create', 'Admin page', [], ['class' => 'btn btn-primary']) !!}
-                @else
-                    {!! link_to_route('post.create', 'Create an article', [], ['class' => 'btn btn-info']) !!}
-                @endif
-                {!! link_to('logout', 'Log out', ['class' => 'btn btn-danger']) !!}
-            </div>
-        </div>
-    @else
-        <div class="row">
-            <div class="col-sm-4">
-                <h1 class="page-header" style="color:#003399">IT Helpdesk</h1>
-            </div>
-            <div class="col-sm-4"></div>
-            <div class="col-sm-4" style="padding-top:65px">
-                {!! link_to('login', 'Log in', ['class' => 'btn btn-primary']) !!}
-            </div>
-        </div>
+    <div class="btn-group pull-right">
+        @if(Auth::check())
+
+            @if(Auth::user()->admin==1 )
+            @else
+                {!! link_to_route('post.create', 'Create an article', [], ['class' => 'btn btn-info']) !!}
+            @endif
+            {!! link_to('logout', 'Log out', ['class' => 'btn btn-danger']) !!}
+
+        @else
+
+            {!! link_to('login', 'Log in', ['class' => 'btn btn-primary']) !!}
+
+    </div>
     @endif
 @endsection
 @section('identification')
@@ -51,7 +39,6 @@
 
 @endsection
 @section('contenu')
-    {!! Html::style('css/search2.css')!!}
     @if(isset($info))
         <div class="row alert alert-info">{{ $info }}</div>
     @endif
@@ -61,17 +48,17 @@
     </div>
     @foreach($posts as $post)
         @if(Auth::check() and Auth::user()->admin==0 and Auth::user()->id==$post->user_id or Auth::user()->admin)
-            <div class="cad" style="padding-left: 25px;padding-right: 25px;border: 2px solid lightgrey; ">
+            <div class="monpost">
                 <article class="row bg-default">
                     <div class="col-md-20">
                         <header>
                             @if ($post->resolv)
                                 <h1>{{ $post->title }}
-                                    <span style="font-size:20px; color:#40D76B;">&#x2714 Resolved !</span>
+                                    <span class="postresolu">&#x2714 Resolved !</span>
                                 </h1>
                             @else
                                 <h1>{{ $post->title }}
-                                    <span style="font-size:20px;color:#ff4d4d" ;>&#x2718 To Resolve !</span>
+                                    <span class="postnonresolu" ;>&#x2718 To Resolve !</span>
                                 </h1>
                             @endif
                         </header>
@@ -107,7 +94,7 @@
                 </article>
                 <br>
             </div>
-            <div class="cad" style="padding: 15px ;">
+            <div class="monspace">
             </div>
         @endif
     @endforeach

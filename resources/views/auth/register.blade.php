@@ -68,7 +68,34 @@
                                     @endif
                                 </div>
                             </div>
+                            <div class="form-group{{ $errors->has('phonenb') ? ' has-error' : '' }}">
+                                <label for="phonenb" class="col-md-4 control-label">Phone Number</label>
 
+                                <div class="col-md-6">
+                                    <input id="phonenb" type="phonenb" class="form-control" name="phonenb"
+                                           value="{{ old('phonenb') }}" required>
+
+                                    @if ($errors->has('phonenb'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('phonenb') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="form-group{{ $errors->has('jobtitle') ? ' has-error' : '' }}">
+                                <label for="jobtitle" class="col-md-4 control-label">Job title</label>
+
+                                <div class="col-md-6">
+                                    <input id="jobitle" type="jobtitle" class="form-control" name="jobtitle"
+                                           value="{{ old('jobtitle') }}" required>
+
+                                    @if ($errors->has('jobtitle'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('jobtitle') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">
                                     <button type="submit" class="btn btn-primary">

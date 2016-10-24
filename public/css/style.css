@@ -1,0 +1,42 @@
+.montitre {
+    padding-left: 15%;
+    color: #003399;
+}
+
+.mesboutons {
+    padding-left: 70%;
+}
+
+.monfooter {
+
+    margin: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    text-color: purple;
+
+}
+
+.monbackground {
+    background-color: #F5F5F5;
+}
+
+.monpost {
+    padding-left: 25px;
+    padding-right: 25px;
+    border: 2px solid lightgrey;
+}
+
+.monspace {
+    padding: 15px;
+}
+
+.postresolu {
+    font-size: 20px;
+    color: #40D76B;
+}
+
+.postnonresolu {
+    font-size: 20px;
+    color: #ff4d4d
+}
+

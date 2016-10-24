@@ -6,6 +6,7 @@ Route::get('/logout', function () {
 });
 
 Auth::routes();
+
 Route::get('/about', function () {
     return view('posts.about');
 });
@@ -16,4 +17,6 @@ Route::get('/', function () {
     return Redirect::route('login');
 });
 
-Route::get('/home', 'HomeController@index');
+Route::get('/home', function () {
+    return Redirect::to('/login');
+});

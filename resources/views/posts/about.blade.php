@@ -5,8 +5,6 @@
         <div class="btn-group pull-right">
             {!! link_to_route('post.index', 'Posts page', [], ['class' => 'btn btn-info']) !!}
             @if(Auth::user()->admin==1 )
-                {{--CHANGE TO ADMIN PAGE--}}
-                {!! link_to_route('post.create', 'Admin page', [], ['class' => 'btn btn-primary']) !!}
             @else
                 {!! link_to_route('post.create', 'Create an article', [], ['class' => 'btn btn-info']) !!}
             @endif
