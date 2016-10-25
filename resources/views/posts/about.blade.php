@@ -18,17 +18,21 @@
     <br>
     <div class="col-sm-offset-3 col-sm-6">
         <div class="panel panel-info">
-            @if(Auth::check())
-                <p>You are connected
-                    as {{Auth::user()->name}} {{ Auth::user()->admin==1 ? ' - Administrator' : ''}}  </p>
-                <p>&#9990 {{Auth::user()->phonenb}}</p>
-                <p>Job: {{Auth::user()->jobtitle}}</p>
-            @else
-                <p>You are not logged in</p>
-            @endif
+
+            <div class="panel-heading">Informations</div>
+            <div class="panel-body">
+                @if(Auth::check())
+                    <p>You are connected
+                        as {{Auth::user()->name}} {{ Auth::user()->admin==1 ? ' - Administrator' : ''}}  </p>
+                    <p>&#9990 {{Auth::user()->phonenb}}</p>
+                    <p>Job: {{Auth::user()->jobtitle}}</p>
+                @else
+                    <p>You are not logged in</p>
+                @endif
+            </div>
         </div>
     </div>
-
+    </br>
 @endsection
 @section('contenu')<br>
 <div class="col-sm-offset-3 col-sm-6">
